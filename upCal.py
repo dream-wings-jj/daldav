@@ -15,7 +15,8 @@ def main():
     schedule = getSchedule()
     if schedule is not None:
         events, begin, end = convIcal(schedule)
-        uploadServerInfo(events, begin, end)
+        if len(events) > 0:
+           uploadServerInfo(events, begin, end)
 
 def getSchedule():
     ret = requests.get(conf.calInfoUrl)
